@@ -2,10 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="primaryText">#212121</color>
-    <color name="sectionTitle">#3F51B5</color>
-    <color name="highlightGreen">#4CAF50</color>
-    <color name="highlightRed">#F44336</color>
-    <color name="highlightBlue">#2196F3</color>
-    <color name="highlightPink">#E91E63</color>
+    <color name="my_primary">#000000</color>
+    <color name="my_on_primary">#FFFFFF</color>
+    <color name="purple_200">#F5F5F5</color>
+    <color name="purple_500">#000000</color>
+    <color name="purple_700">#333333</color>
+    <color name="teal_200">#AAAAAA</color>
+    <color name="teal_700">#888888</color>
+    <color name="dark_gray">#222222</color>
+    <color name="gray_hint">#666666</color>
+    <color name="light_gray">#F5F5F5</color>
 </resources>

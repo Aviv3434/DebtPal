@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F5F6F8"
+    android:background="@drawable/form_background"
     android:padding="24dp">
 
     <LinearLayout
         android:id="@+id/formContainer"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:background="@drawable/form_background"
         android:padding="24dp"
         android:elevation="4dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/addnewdebit"
-            android:textSize="22sp"
-            android:textColor="#2E3A59"
+            android:fontFamily="@font/eb_garamond_variable_font_wght"
             android:textStyle="bold"
-            android:layout_gravity="center_horizontal"
+            android:textSize="36sp"
+            android:textColor="@color/black"
+            android:gravity="center"
             android:layout_marginBottom="24dp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -30,7 +31,6 @@
             android:layout_height="wrap_content"
             android:hint="@string/payername"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxStrokeColor="#6200EE"
             app:boxCornerRadiusTopStart="12dp"
             app:boxCornerRadiusBottomEnd="12dp">
 
@@ -38,7 +38,8 @@
                 android:id="@+id/etPayer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:fontFamily="@font/eb_garamond_variable_font_wght" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -52,7 +53,8 @@
                 android:id="@+id/etReceiver"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:fontFamily="@font/eb_garamond_variable_font_wght" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -66,7 +68,8 @@
                 android:id="@+id/etAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:fontFamily="@font/eb_garamond_variable_font_wght" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -80,7 +83,8 @@
                 android:id="@+id/etDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="text"
+                android:fontFamily="@font/eb_garamond_variable_font_wght" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -103,8 +107,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/choosedate"
-                android:textSize="16sp"
-                android:textColor="#374151" />
+                android:textSize="18sp"
+                android:textColor="#374151"
+                android:fontFamily="@font/eb_garamond_variable_font_wght" />
 
             <Button
                 android:id="@+id/btnPickDate"
@@ -112,7 +117,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/choose"
                 android:textColor="#FFFFFF"
-                android:backgroundTint="#6366F1" />
+                android:backgroundTint="#000000"
+                android:textSize="16sp"
+                android:fontFamily="@font/eb_garamond_variable_font_wght" />
         </LinearLayout>
 
         <TextView
@@ -120,8 +127,9 @@
             android:layout_height="wrap_content"
             android:text="@string/inovice"
             android:textStyle="bold"
-            android:textSize="14sp"
-            android:layout_marginTop="20dp" />
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/eb_garamond_variable_font_wght" />
 
         <ImageView
             android:id="@+id/imgReceipt"
@@ -140,8 +148,9 @@
             android:layout_marginTop="8dp"
             android:drawableStart="@drawable/ic_upload"
             android:drawablePadding="8dp"
-            android:backgroundTint="#0288D1"
-            android:textColor="#FFFFFF" />
+            android:backgroundTint="#000000"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/eb_garamond_variable_font_wght" />
 
         <CheckBox
             android:id="@+id/checkboxSettled"
@@ -149,7 +158,8 @@
             android:layout_height="wrap_content"
             android:text="@string/paid"
             android:layout_marginTop="20dp"
-            android:textColor="#374151" />
+            android:textColor="#374151"
+            android:fontFamily="@font/eb_garamond_variable_font_wght" />
 
         <Button
             android:id="@+id/btnSave"
@@ -158,7 +168,9 @@
             android:text="@string/save"
             android:textColor="#FFFFFF"
             android:layout_marginTop="24dp"
-            android:backgroundTint="#4CAF50" />
+            android:backgroundTint="#4CAF50"
+            android:fontFamily="@font/eb_garamond_variable_font_wght"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/btnDelete"
@@ -168,6 +180,7 @@
             android:textColor="#FFFFFF"
             android:layout_marginTop="8dp"
             android:backgroundTint="#F44336"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:fontFamily="@font/eb_garamond_variable_font_wght" />
     </LinearLayout>
 </ScrollView>
