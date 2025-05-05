@@ -33,7 +33,6 @@
         android:textColor="@color/black"
         android:textSize="28sp" />
 
-    <!-- כפתורים -->
     <Button
         android:id="@+id/btnAddDebt"
         android:layout_width="match_parent"
@@ -45,6 +44,7 @@
         android:text="@string/add_debt"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:backgroundTint="@android:color/transparent"
         android:textSize="24sp" />
 
     <Button
@@ -58,6 +58,7 @@
         android:text="@string/edit_debt"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:backgroundTint="@android:color/transparent"
         android:textSize="24sp" />
 
     <Button
@@ -71,6 +72,7 @@
         android:text="@string/statistics"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:backgroundTint="@android:color/transparent"
         android:textSize="24sp" />
 
 </LinearLayout>
