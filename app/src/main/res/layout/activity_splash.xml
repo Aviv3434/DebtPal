@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <!-- תוכל להחליף את זה בתמונה או לוגו -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
