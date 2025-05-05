@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_debt">Add new debt</string>
+    <string name="edit_debt">Edit/Close debt</string>
+    <string name="statistics">Statistics</string>
+    <string name="payer">Who paid?</string>
+    <string name="receiver">Who owes?</string>
+    <string name="amount">Amount</string>
+    <string name="description">Description</string>
+    <string name="select_date">" No date selected"</string>
+    <string name="pick_date">Select date</string>
+    <string name="receipt_image">Inovice</string>
+    <string name="upload_image">Upload image</string>
+    <string name="mark_as_settled">Mark as completed</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="addnewdebit">" Add new debit"</string>
+    <string name="payername">Payer</string>
+    <string name="recipientname">Recipient</string>
+    <string name="total">Amuont (₪)</string>
+    <string name="choosedate">Choose date</string>
+    <string name="choose">Choose</string>
+    <string name="inoviceimage">Inovice image</string>
+    <string name="chooseimage">Choose image</string>
+    <string name="paid">Mark as completed</string>
+    <string name="noopendebts">No open debts</string>
+    <string name="inovice">Inovice</string>
+</resources>
