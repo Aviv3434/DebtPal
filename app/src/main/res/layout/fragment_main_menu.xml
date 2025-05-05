@@ -5,28 +5,72 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
+    android:background="@drawable/form_background"
     android:padding="24dp"
     tools:context=".MainMenuFragment">
 
+    <!-- כותרת האפליקציה -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/eb_garamond_variable_font_wght"
+        android:gravity="center"
+        android:text="DebtPal"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <!-- כותרת מסך -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/eb_garamond_variable_font_wght"
+        android:gravity="center"
+        android:text="Main Menu"
+        android:textColor="@color/black"
+        android:textSize="28sp" />
+
+    <!-- כפתורים -->
     <Button
         android:id="@+id/btnAddDebt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_debt" />
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/eb_garamond_variable_font_wght"
+        android:padding="14dp"
+        android:text="@string/add_debt"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/btnEditDebt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/edit_debt" />
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/eb_garamond_variable_font_wght"
+        android:padding="14dp"
+        android:text="@string/edit_debt"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/btnStatistics"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/statistics" />
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/eb_garamond_variable_font_wght"
+        android:padding="14dp"
+        android:text="@string/statistics"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
 
 </LinearLayout>
