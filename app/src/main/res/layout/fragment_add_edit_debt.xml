@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F5F6F8"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:id="@+id/formContainer"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/form_background"
+        android:padding="24dp"
+        android:elevation="4dp">
+
+        <!-- כותרת -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="הוספת חיוב חדש"
+            android:textSize="22sp"
+            android:textColor="#2E3A59"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp" />
+
+        <!-- שדות -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="שם משלם"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="#6200EE"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPayer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="שם מקבל"
+            android:layout_marginTop="12dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etReceiver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="סכום (₪)"
+            android:layout_marginTop="12dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="תיאור"
+            android:layout_marginTop="12dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- תאריך -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_calendar"
+                android:layout_marginEnd="8dp"
+                app:tint="#6B7280" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="בחר תאריך"
+                android:textSize="16sp"
+                android:textColor="#374151" />
+
+            <Button
+                android:id="@+id/btnPickDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="בחר"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#6366F1" />
+        </LinearLayout>
+
+        <!-- תמונה -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="קבלה (אופציונלי)"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_marginTop="20dp" />
+
+        <ImageView
+            android:id="@+id/imgReceipt"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/image_placeholder"
+            android:contentDescription="תמונה של הקבלה" />
+
+        <Button
+            android:id="@+id/btnUploadImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="בחר תמונה"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/ic_upload"
+            android:drawablePadding="8dp"
+            android:backgroundTint="#0288D1"
+            android:textColor="#FFFFFF" />
+
+        <!-- חוב שולם -->
+        <CheckBox
+            android:id="@+id/checkboxSettled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="סמן כשולם"
+            android:layout_marginTop="20dp"
+            android:textColor="#374151" />
+
+        <!-- כפתורי פעולה -->
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="שמור"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#4CAF50" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="מחק"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#F44336"
+            android:visibility="gone" />
+    </LinearLayout>
+</ScrollView>
