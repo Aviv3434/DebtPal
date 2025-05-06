@@ -27,4 +27,17 @@
     <string name="paid">Mark as completed</string>
     <string name="noopendebts">No open debts</string>
     <string name="inovice">Inovice</string>
+    <string name="add_new_debit">Add new debit</string>
+    <string name="recipient">Recipient</string>
+    <string name="choose_date">Choose date</string>
+    <string name="invoice_optional">Invoice (optional)</string>
+    <string name="choose_image">Choose image</string>
+    <string name="mark_as_completed">Mark as completed</string>
+    <string name="debtpal">DebtPal</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="select_statistic">Select Statistic</string>
+    <string name="summary_title">"Summary "</string>
+    <string name="legend_unsettled">Open</string>
+    <string name="legend_new">New</string>
+    <string name="legend_settled">Closed</string>
 </resources>
