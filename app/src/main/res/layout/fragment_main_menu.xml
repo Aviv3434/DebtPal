@@ -17,7 +17,7 @@
         android:layout_marginBottom="4dp"
         android:fontFamily="@font/eb_garamond_variable_font_wght"
         android:gravity="center"
-        android:text="DebtPal"
+        android:text="@string/debtpal"
         android:textColor="@color/black"
         android:textSize="34sp"
         android:textStyle="bold" />
@@ -29,7 +29,7 @@
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/eb_garamond_variable_font_wght"
         android:gravity="center"
-        android:text="Main Menu"
+        android:text="@string/main_menu"
         android:textColor="@color/black"
         android:textSize="28sp" />
 

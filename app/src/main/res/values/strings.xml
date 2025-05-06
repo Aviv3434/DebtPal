@@ -5,20 +5,20 @@
     <string name="add_debt">הוסף חוב חדש</string>
     <string name="edit_debt">ערוך/סגור חוב</string>
     <string name="statistics">סטטיסטיקות</string>
-    <string name="payer">מי שילם?</string>
-    <string name="receiver">מי חייב?</string>
+    <string name="payer">משלם</string>
+    <string name="receiver">מקבל</string>
     <string name="amount">סכום</string>
     <string name="description">תיאור</string>
     <string name="select_date">לא נבחר תאריך</string>
-    <string name="pick_date">בחר תאריך</string>
+    <string name="pick_date">בחר/י תאריך</string>
     <string name="receipt_image">חשבונית</string>
-    <string name="upload_image">העלה תמונה</string>
+    <string name="upload_image">העלה/י תמונה</string>
     <string name="mark_as_settled">סמן כטופל</string>
     <string name="save">שמור</string>
     <string name="delete">מחק</string>
     <string name="addnewdebit">הוספת חיוב חדש</string>
-    <string name="payername">שם משלם</string>
-    <string name="recipientname">שם מקבל</string>
+    <string name="payername">משלם</string>
+    <string name="recipientname">מקבל</string>
     <string name="total">סכום (₪)</string>
     <string name="choosedate">בחר תאריך</string>
     <string name="choose">בחר</string>
@@ -27,5 +27,18 @@
     <string name="paid">סמן כשולם</string>
     <string name="noopendebts">איו חובות פתוחים</string>
     <string name="inovice">חשבונית</string>
+    <string name="add_new_debit">הוספת חיוב חדש</string>
+    <string name="recipient">שם מקבל</string>
+    <string name="choose_date">בחר/י תאריך</string>
+    <string name="invoice_optional">קבלה (אופציונלי)</string>
+    <string name="choose_image">בחר/י תמונה</string>
+    <string name="mark_as_completed">סמן כשולם</string>
+    <string name="debtpal">DebtPal</string>
+    <string name="main_menu">תפריט ראשי</string>
+    <string name="select_statistic">בחר סטטיסטיקה</string>
+    <string name="summary_title">דו"ח סיכום</string>
+    <string name="legend_settled">סגור</string>
+    <string name="legend_unsettled">פתוח</string>
+    <string name="legend_new">חדש</string>
 
 </resources>
