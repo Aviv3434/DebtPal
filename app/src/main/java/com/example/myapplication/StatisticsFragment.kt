@@ -42,11 +42,12 @@ class StatisticsFragment : Fragment() {
 
         val spinner = binding.spinnerStatisticType
         val options = listOf(
-            "Status Breakdown",
-            "Debts Over Time",
-            "Debt Amounts Histogram",
-            "Summary Report"
+            getString(R.string.status_breakdown),
+            getString(R.string.debts_over_time),
+            getString(R.string.debt_amounts_histogram),
+            getString(R.string.summary_report)
         )
+
         spinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, options)
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -54,10 +55,10 @@ class StatisticsFragment : Fragment() {
                 viewModel.allDebts.observe(viewLifecycleOwner) { debts ->
                     binding.statisticContainer.removeAllViews()
                     when (options[position]) {
-                        "Status Breakdown" -> showStatusBreakdown(debts)
-                        "Debts Over Time" -> showDebtsOverTime(debts)
-                        "Debt Amounts Histogram" -> showHistogram(debts)
-                        "Summary Report" -> showTextSummary(debts)
+                        getString(R.string.status_breakdown) -> showStatusBreakdown(debts)
+                        getString(R.string.debts_over_time) -> showDebtsOverTime(debts)
+                        getString(R.string.debt_amounts_histogram) -> showHistogram(debts)
+                        getString(R.string.summary_report) -> showTextSummary(debts)
                     }
                 }
             }
@@ -74,11 +75,16 @@ class StatisticsFragment : Fragment() {
             it.date >= cal.timeInMillis
         }
 
+        val labelSettled = getString(R.string.settled)
+        val labelUnsettled = getString(R.string.unsettled)
+        val labelNew = getString(R.string.new_debt)
+
         val data = mapOf(
-            "Settled" to settled.toFloat(),
-            "Unsettled" to unsettled.toFloat(),
-            "New" to addedThisMonth.toFloat()
+            labelSettled to settled.toFloat(),
+            labelUnsettled to unsettled.toFloat(),
+            labelNew to addedThisMonth.toFloat()
         )
+
 
         val colors = listOf(
             Color.parseColor("#4CAF50"),
@@ -94,9 +100,9 @@ class StatisticsFragment : Fragment() {
         }
 
         binding.statisticContainer.addView(pieChart)
-        addLegend("Settled", colors[0], "✅")
-        addLegend("Unsettled", colors[1], "❌")
-        addLegend("New", colors[2], "🆕")
+        addLegend(labelSettled, colors[0], "✅")
+        addLegend(labelUnsettled, colors[1], "❌")
+        addLegend(labelNew, colors[2], "🆕")
     }
 
     private fun showDebtsOverTime(debts: List<DebtItem>) {
@@ -142,12 +148,13 @@ class StatisticsFragment : Fragment() {
         }
 
         val title = TextView(requireContext()).apply {
-            text = "\uD83D\uDCCB  Summary Report"
+            text = "\uD83D\uDCCB  ${getString(R.string.stat_summary_report)}"
             textSize = 20f
             setTypeface(null, Typeface.BOLD)
             setTextColor(Color.parseColor("#3F51B5"))
             setPadding(0, 0, 0, 24)
         }
+
         container.addView(title)
 
         fun addStyledLine(text: String, colorBg: String? = null, emoji: String = "") {
@@ -168,16 +175,18 @@ class StatisticsFragment : Fragment() {
             container.addView(row, params)
         }
 
-        addStyledLine("Total Debts: ₪${"%.2f".format(total)}", "#607D8B", "\uD83D\uDCB0")
-        addStyledLine("Average Debt: ₪${"%.2f".format(avg)}", null, "➗")
-        addStyledLine("Max Debt: ₪${"%.2f".format(max)}", "#FF9800", "\uD83D\uDD3C")
-        addStyledLine("Total Entries: $totalCount", null, "\uD83D\uDCC5")
-        addStyledLine("Settled: $settledCount", "#4CAF50", "✅")
-        addStyledLine("Unsettled: $unsettledCount", "#F44336", "❌")
+        addStyledLine(getString(R.string.summary_total, total), "#607D8B", "\uD83D\uDCB0")
+        addStyledLine(getString(R.string.summary_average, avg), null, "➗")
+        addStyledLine(getString(R.string.summary_max, max), "#FF9800", "\uD83D\uDD3C")
+        addStyledLine(getString(R.string.summary_entries, totalCount), null, "\uD83D\uDCC5")
+        addStyledLine(getString(R.string.summary_settled, settledCount), "#4CAF50", "✅")
+        addStyledLine(getString(R.string.summary_unsettled, unsettledCount), "#F44336", "❌")
+
+
 
         // PDF Download Button
         val button = Button(requireContext()).apply {
-            text = "Download as PDF"
+            text = getString(R.string.download_pdf)
             setPadding(16, 12, 16, 12)
             setBackgroundColor(Color.parseColor("#3F51B5"))
             setTextColor(Color.WHITE)
@@ -186,6 +195,7 @@ class StatisticsFragment : Fragment() {
                 generateSummaryPdf(total, avg, max, totalCount, settledCount, unsettledCount)
             }
         }
+
         container.addView(button)
 
         binding.statisticContainer.addView(container)
@@ -211,15 +221,16 @@ class StatisticsFragment : Fragment() {
         }
 
         val lines = listOf(
-            "Summary Report",
+            getString(R.string.summary_report),
             "------------------------",
-            "Total Debts: ₪${"%.2f".format(total)}",
-            "Average Debt: ₪${"%.2f".format(avg)}",
-            "Max Debt: ₪${"%.2f".format(max)}",
-            "Total Entries: $count",
-            "Settled: $settled",
-            "Unsettled: $unsettled"
+            "${getString(R.string.total_debts)}: ₪${"%.2f".format(total)}",
+            "${getString(R.string.avg_debt)}: ₪${"%.2f".format(avg)}",
+            "${getString(R.string.max_debt)}: ₪${"%.2f".format(max)}",
+            "${getString(R.string.total_entries)}: $count",
+            getString(R.string.summary_settled, settled),
+            getString(R.string.summary_unsettled, unsettled)
         )
+
 
         var y = 40f
         for (line in lines) {

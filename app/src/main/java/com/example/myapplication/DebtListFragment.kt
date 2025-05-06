@@ -34,7 +34,6 @@ class DebtListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // יצירת ViewModel עם Factory
         val dao = AppDatabase.getDatabase(requireContext()).debtDao()
         val repository = DebtRepository(dao)
         val factory = DebtViewModelFactory(repository)
