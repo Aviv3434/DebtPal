@@ -1,8 +1,6 @@
-package com.example.myapplication.repository
+package com.example.myapplication.data
 
 import androidx.lifecycle.LiveData
-import com.example.myapplication.data.DebtDao
-import com.example.myapplication.data.DebtItem
 
 class DebtRepository(private val debtDao: DebtDao) {
 

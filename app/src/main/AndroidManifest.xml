@@ -31,9 +31,8 @@
                 android:resource="@xml/file_paths"/>
         </provider>
 
-        <!-- SplashActivity מוגדרת כפעילות ראשית -->
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -41,9 +40,8 @@
             </intent-filter>
         </activity>
 
-        <!-- MainActivity תופעל לאחר מכן -->
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true" />
     </application>
 

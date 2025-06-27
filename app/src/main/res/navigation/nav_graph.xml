@@ -7,12 +7,9 @@
 
     <fragment
         android:id="@+id/mainMenuFragment"
-        android:name="com.example.myapplication.MainMenuFragment"
+        android:name="com.example.myapplication.ui.main.MainMenuFragment"
         android:label=""
         tools:layout="@layout/fragment_main_menu" >
-        <action
-            android:id="@+id/action_mainMenuFragment_to_statisticsFragment"
-            app:destination="@id/statisticsFragment" />
         <action
             android:id="@+id/action_mainMenuFragment_to_addEditDebtFragment"
             app:destination="@id/addEditDebtFragment" />
@@ -23,7 +20,7 @@
 
     <fragment
         android:id="@+id/addEditDebtFragment"
-        android:name="com.example.myapplication.AddEditDebtFragment"
+        android:name="com.example.myapplication.ui.addedit.AddEditDebtFragment"
         android:label="fragment_add_edit_debt"
         tools:layout="@layout/fragment_add_edit_debt" >
         <argument
@@ -34,7 +31,7 @@
 
     <fragment
         android:id="@+id/debtListFragment"
-        android:name="com.example.myapplication.DebtListFragment"
+        android:name="com.example.myapplication.ui.debtlist.DebtListFragment"
         android:label="fragment_debt_list"
         tools:layout="@layout/fragment_debt_list" >
         <!-- פעולה שמאפשרת ניווט מתוך רשימת החובות למסך הוספה/עריכה -->
@@ -43,9 +40,4 @@
             app:destination="@id/addEditDebtFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/statisticsFragment"
-        android:name="com.example.myapplication.StatisticsFragment"
-        android:label="fragment_statistics"
-        tools:layout="@layout/fragment_statistics" />
 </navigation>

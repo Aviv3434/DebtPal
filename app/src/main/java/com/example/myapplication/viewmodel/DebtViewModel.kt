@@ -2,7 +2,7 @@ package com.example.myapplication.viewmodel
 
 import androidx.lifecycle.*
 import com.example.myapplication.data.DebtItem
-import com.example.myapplication.repository.DebtRepository
+import com.example.myapplication.data.DebtRepository
 import kotlinx.coroutines.launch
 
 class DebtViewModel(private val repository: DebtRepository) : ViewModel() {
