@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -36,11 +36,6 @@ class MainMenuFragment : Fragment() {
             )
         }
 
-        binding.btnStatistics.setOnClickListener {
-            findNavController().navigate(
-                MainMenuFragmentDirections.actionMainMenuFragmentToStatisticsFragment()
-            )
-        }
     }
 
     override fun onDestroyView() {

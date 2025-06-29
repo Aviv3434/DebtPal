@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.ui.addedit
 
 import android.Manifest
 import android.app.AlertDialog
@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +21,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.myapplication.data.AppDatabase
 import com.example.myapplication.data.DebtItem
 import com.example.myapplication.databinding.FragmentAddEditDebtBinding
-import com.example.myapplication.repository.DebtRepository
+import com.example.myapplication.data.DebtRepository
 import com.example.myapplication.viewmodel.DebtViewModel
 import com.example.myapplication.viewmodel.DebtViewModelFactory
 import java.io.File

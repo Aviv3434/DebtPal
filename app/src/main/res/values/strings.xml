@@ -4,7 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_debt">Add new debt</string>
     <string name="edit_debt">Edit/Close debt</string>
-    <string name="statistics">Statistics</string>
     <string name="payer">Who paid?</string>
     <string name="receiver">Who owes?</string>
     <string name="amount">Amount</string>
@@ -36,39 +35,17 @@
     <string name="mark_as_completed">Mark as completed</string>
     <string name="debtpal">DebtPal</string>
     <string name="main_menu">Main Menu</string>
-    <string name="select_statistic">Select Statistic</string>
-    <string name="summary_title">Summary</string>
     <string name="legend_unsettled">Open</string>
     <string name="legend_new">New</string>
     <string name="legend_settled">Closed</string>
     <string name="stat_status_breakdown">Status Breakdown</string>
-    <string name="stat_debts_over_time">Debts Over Time</string>
-    <string name="stat_debt_amounts_histogram">Debt Amounts Histogram</string>
-    <string name="stat_summary_report">Summary Report</string>
-    <string name="summary_total">Total Debts: ₪%1$.2f</string>
-    <string name="summary_average">Average Debt: ₪%1$.2f</string>
-    <string name="summary_max">Max Debt: ₪%1$.2f</string>
-    <string name="summary_entries">Total Entries: %1$d</string>
-    <string name="summary_settled">Settled: %1$d</string>
-    <string name="summary_unsettled">Unsettled: %1$d</string>
-    <string name="download_pdf">Download as PDF</string>
-    <string name="status_breakdown">Status Breakdown</string>
-    <string name="debts_over_time">Debts Over Time</string>
-    <string name="debt_amounts_histogram">Debt Amounts Histogram</string>
-    <string name="summary_report">Summary Report</string>
-    <string name="settled">Settled</string>
-    <string name="unsettled">Unsettled</string>
-    <string name="new_debt">New</string>
-    <string name="range_0_50">₪0–50</string>
-    <string name="range_51_100">₪51–100</string>
-    <string name="range_101_200">₪101–200</string>
-    <string name="range_201_plus">₪201+</string>
-    <string name="total_debts">Total Debts</string>
-    <string name="avg_debt">Average Debt</string>
-    <string name="max_debt">Max Debt</string>
-    <string name="total_entries">Total Entries</string>
-    <string name="pdf_saved">PDF saved to</string>
-
+    <string name="payer_to_receiver">%1$s → %2$s</string>
+    <string name="amount_format">₪%.2f</string>
+    <string name="handled">Handled</string>
+    <string name="name_format">%1$s paid to %2$s</string>
+    <string name="app_logo">logo</string>
+    <string name="manage_your_debts">Manage your debts</string>
+    <string name="with_ease">with ease</string>
 
 
 </resources>

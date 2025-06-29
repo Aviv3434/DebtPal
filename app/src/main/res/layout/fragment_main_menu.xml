@@ -1,78 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainMenuLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/form_background"
-    android:padding="24dp"
-    tools:context=".MainMenuFragment">
+    android:background="@android:color/white">
 
-    <!-- כותרת האפליקציה -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/mainMenuLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="4dp"
-        android:fontFamily="@font/eb_garamond_variable_font_wght"
-        android:gravity="center"
-        android:text="@string/debtpal"
-        android:textColor="@color/black"
-        android:textSize="34sp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp"
+        android:layout_gravity="center">
 
-    <!-- כותרת מסך -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:fontFamily="@font/eb_garamond_variable_font_wght"
-        android:gravity="center"
-        android:text="@string/main_menu"
-        android:textColor="@color/black"
-        android:textSize="28sp" />
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/splash_screen"
+            android:contentDescription="@string/app_logo"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp" />
 
-    <Button
-        android:id="@+id/btnAddDebt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/rounded_button"
-        android:fontFamily="@font/eb_garamond_variable_font_wght"
-        android:padding="14dp"
-        android:text="@string/add_debt"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:backgroundTint="@android:color/transparent"
-        android:textSize="24sp" />
 
-    <Button
-        android:id="@+id/btnEditDebt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/rounded_button"
-        android:fontFamily="@font/eb_garamond_variable_font_wght"
-        android:padding="14dp"
-        android:text="@string/edit_debt"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:backgroundTint="@android:color/transparent"
-        android:textSize="24sp" />
+        <TextView
+            android:id="@+id/appTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/debtpal"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="4dp" />
 
-    <Button
-        android:id="@+id/btnStatistics"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/rounded_button"
-        android:fontFamily="@font/eb_garamond_variable_font_wght"
-        android:padding="14dp"
-        android:text="@string/statistics"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:backgroundTint="@android:color/transparent"
-        android:textSize="24sp" />
+        <TextView
+            android:id="@+id/appSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/manage_your_debts"
+            android:textSize="16sp"
+            android:textColor="#555555" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/appSubtitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/with_ease"
+            android:textColor="#B000B0"
+            android:textSize="16sp"
+            android:layout_marginBottom="36dp" />
+
+        <LinearLayout
+            android:id="@+id/btnAddDebt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingVertical="18dp"
+            android:paddingStart="24dp"
+            android:layout_marginBottom="28dp"
+            android:elevation="6dp"
+            tools:ignore="RtlSymmetry">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_input_add"
+                android:layout_marginEnd="16dp"
+                app:tint="@android:color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_new_debit"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnEditDebt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingVertical="18dp"
+            android:paddingStart="24dp"
+            android:elevation="6dp"
+            tools:ignore="RtlSymmetry">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_edit"
+                android:layout_marginEnd="16dp"
+                app:tint="@android:color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_debt"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="48dp" />
+    </LinearLayout>
+</ScrollView>

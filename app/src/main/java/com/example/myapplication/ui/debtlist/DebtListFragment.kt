@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.ui.debtlist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,11 +10,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.data.AppDatabase
 import com.example.myapplication.databinding.FragmentDebtListBinding
-import com.example.myapplication.repository.DebtRepository
+import com.example.myapplication.data.DebtRepository
 import com.example.myapplication.viewmodel.DebtViewModel
 import com.example.myapplication.viewmodel.DebtViewModelFactory
-import com.example.myapplication.data.DebtAdapter
-
 
 class DebtListFragment : Fragment() {
 
@@ -39,11 +37,16 @@ class DebtListFragment : Fragment() {
         val factory = DebtViewModelFactory(repository)
         debtViewModel = ViewModelProvider(this, factory)[DebtViewModel::class.java]
 
-        val adapter = DebtAdapter { selectedDebt ->
-            val action = DebtListFragmentDirections
-                .actionDebtListFragmentToAddEditDebtFragment(selectedDebt)
-            findNavController().navigate(action)
-        }
+        val adapter = DebtAdapter(
+            onItemClick = { selectedDebt ->
+                val action = DebtListFragmentDirections
+                    .actionDebtListFragmentToAddEditDebtFragment(selectedDebt)
+                findNavController().navigate(action)
+            },
+            onCheckboxClick = { updatedDebt ->
+                debtViewModel.updateDebt(updatedDebt)
+            }
+        )
 
         binding.recyclerDebts.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerDebts.adapter = adapter

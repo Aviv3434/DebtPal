@@ -2,7 +2,7 @@ package com.example.myapplication.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.myapplication.repository.DebtRepository
+import com.example.myapplication.data.DebtRepository
 
 class DebtViewModelFactory(
     private val repository: DebtRepository

@@ -4,7 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_debt">הוסף חוב חדש</string>
     <string name="edit_debt">ערוך/סגור חוב</string>
-    <string name="statistics">סטטיסטיקות</string>
     <string name="payer">משלם</string>
     <string name="receiver">מקבל</string>
     <string name="amount">סכום</string>
@@ -16,7 +15,7 @@
     <string name="mark_as_settled">סמן כטופל</string>
     <string name="save">שמור</string>
     <string name="delete">מחק</string>
-    <string name="addnewdebit">הוספת חיוב חדש</string>
+    <string name="addnewdebit">הוספת חוב חדש</string>
     <string name="payername">משלם</string>
     <string name="recipientname">מקבל</string>
     <string name="total">סכום (₪)</string>
@@ -27,7 +26,7 @@
     <string name="paid">סמן כשולם</string>
     <string name="noopendebts">איו חובות פתוחים</string>
     <string name="inovice">חשבונית</string>
-    <string name="add_new_debit">הוספת חיוב חדש</string>
+    <string name="add_new_debit">הוספת חוב חדש</string>
     <string name="recipient">שם מקבל</string>
     <string name="choose_date">בחר/י תאריך</string>
     <string name="invoice_optional">קבלה (אופציונלי)</string>
@@ -35,40 +34,18 @@
     <string name="mark_as_completed">סמן כשולם</string>
     <string name="debtpal">DebtPal</string>
     <string name="main_menu">תפריט ראשי</string>
-    <string name="select_statistic">בחר סטטיסטיקה</string>
-    <string name="summary_title">דו"ח סיכום</string>
     <string name="legend_settled">סגור</string>
     <string name="legend_unsettled">פתוח</string>
     <string name="legend_new">חדש</string>
     <string name="stat_status_breakdown">סטטוס</string>
-    <string name="stat_debts_over_time">חובות לאורך זמן</string>
-    <string name="stat_debt_amounts_histogram">היסטוגרמה של סכומי חוב</string>
-    <string name="stat_summary_report">דו\"ח סיכום</string>
-    <string name="summary_total">סה״כ חובות: ₪%1$.2f</string>
-    <string name="summary_average">חוב ממוצע: ₪%1$.2f</string>
-    <string name="summary_max">חוב מקסימלי: ₪%1$.2f</string>
-    <string name="summary_entries">סך רשומות: %1$d</string>
-    <string name="summary_settled">שולמו: %1$d</string>
-    <string name="summary_unsettled">לא שולמו: %1$d</string>
-    <string name="download_pdf">הורד כ־PDF</string>
-    <string name="status_breakdown">פילוח לפי סטטוס</string>
-    <string name="debts_over_time">חובות לאורך זמן</string>
-    <string name="debt_amounts_histogram">היסטוגרמה של סכומי חוב</string>
-    <string name="summary_report">דו״ח סיכום</string>
-    <string name="settled">חובות סגורים</string>
-    <string name="unsettled">חובות פתוחים</string>
-    <string name="new_debt">חובות חדשים</string>
-    <string name="range_0_50">₪0–50</string>
-    <string name="range_51_100">₪51–100</string>
-    <string name="range_101_200">₪101–200</string>
-    <string name="range_201_plus">₪201+</string>
-    <string name="total_debts">סך כל החובות</string>
-    <string name="avg_debt">ממוצע חוב</string>
-    <string name="max_debt">החוב הגבוה ביותר</string>
-    <string name="total_entries">סה״כ רשומות</string>
-    <string name="pdf_saved">PDF נשמר ב</string>
 
-
+    <string name="payer_to_receiver">%1$s → %2$s</string>
+    <string name="amount_format">₪%.2f</string>
+    <string name="handled">טופל</string>
+    <string name="name_format">%1$s paid to %2$s</string>
+    <string name="app_logo">לוגו</string>
+    <string name="manage_your_debts">נהל את החובת שלך</string>
+    <string name="with_ease">בקלות</string>
 
 
 </resources>
