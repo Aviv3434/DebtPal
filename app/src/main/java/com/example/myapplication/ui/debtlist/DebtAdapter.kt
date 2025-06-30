@@ -12,7 +12,8 @@ import java.util.*
 
 class DebtAdapter(
     private val onItemClick: (DebtItem) -> Unit,
-    private val onCheckboxClick: (DebtItem) -> Unit
+    private val onCheckboxClick: (DebtItem) -> Unit,
+    private val onFavoriteClick: (DebtItem) -> Unit
 ) : ListAdapter<DebtItem, DebtAdapter.DebtViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DebtViewHolder {
@@ -29,33 +30,31 @@ class DebtAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(debt: DebtItem) {
-            val context = binding.root.context
             val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
-            // טקסט 'Tom → Ron'
             val directionText = "${debt.payer} → ${debt.receiver}"
             binding.tvName.text = directionText
 
-            // סכום
             binding.tvAmount.text = "₪%.0f".format(debt.amount)
 
-            // תאריך
             val formattedDate = dateFormat.format(Date(debt.date))
             binding.tvDate.text = formattedDate
 
-            // תיאור
             binding.tvDescription.text = debt.description
 
-            // מצב צ'קבוקס
             binding.checkboxHandled.isChecked = debt.isSettled
-
-            // שינוי מצב הטופל
             binding.checkboxHandled.setOnCheckedChangeListener { _, isChecked ->
-                val updated = debt.copy(isSettled = isChecked)
-                onCheckboxClick(updated)
+                // רק מעדכן isSettled
+                onCheckboxClick(debt.copy(isSettled = isChecked, isFavorite = debt.isFavorite))
             }
 
-            // קליק לפתיחת מסך עריכה
+            // favorite checkbox
+            binding.checkboxFavorite.isChecked = debt.isFavorite
+            binding.checkboxFavorite.setOnCheckedChangeListener { _, isFav ->
+                // רק מעדכן isFavorite
+                onFavoriteClick(debt.copy(isFavorite = isFav, isSettled = debt.isSettled))
+            }
+
             binding.root.setOnClickListener {
                 onItemClick(debt)
             }

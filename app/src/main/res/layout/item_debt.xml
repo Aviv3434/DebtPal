@@ -33,6 +33,15 @@
                 android:fontFamily="@font/eb_garamond_variable_font_wght" />
 
             <CheckBox
+                android:id="@+id/checkboxFavorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/favorite"
+                android:textSize="12sp"
+                android:fontFamily="@font/eb_garamond_variable_font_wght"/>
+
+
+            <CheckBox
                 android:id="@+id/checkboxHandled"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

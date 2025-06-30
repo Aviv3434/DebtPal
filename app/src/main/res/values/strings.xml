@@ -46,6 +46,13 @@
     <string name="app_logo">logo</string>
     <string name="manage_your_debts">Manage your debts</string>
     <string name="with_ease">with ease</string>
-
+    <string name="favorite">check as favorite</string>
+    <string name="no_favorites">No favorites</string>
+    <string name="no_closed_debts">No closed debts</string>
+    <string name="closed_debts">Closed Debts</string>
+    <string name="sync_background">sync_background</string>
+    <string name="favorites">favorites</string>
+    <string name="sync_now">Sync now</string>
+    <string name="lunch_at_restaurant">Lunch at restaurant</string>
 
 </resources>

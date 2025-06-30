@@ -36,6 +36,22 @@ class MainMenuFragment : Fragment() {
             )
         }
 
+        binding.btnLocalCount.setOnClickListener {
+            findNavController().navigate(
+                MainMenuFragmentDirections.actionMainMenuFragmentToLocalCountFragment()
+            )
+        }
+        binding.btnFavorites.setOnClickListener {
+            findNavController().navigate(
+                MainMenuFragmentDirections.actionMainMenuFragmentToFavoritesFragment()
+            )
+        }
+        binding.btnSync.setOnClickListener {
+            findNavController().navigate(
+                MainMenuFragmentDirections.actionMainMenuFragmentToSyncFragment()
+            )
+        }
+
     }
 
     override fun onDestroyView() {
