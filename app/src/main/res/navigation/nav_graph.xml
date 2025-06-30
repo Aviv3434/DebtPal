@@ -69,4 +69,5 @@
         android:label="סנכרון רקע"
         tools:layout="@layout/fragment_sync" />
 
+
 </navigation>

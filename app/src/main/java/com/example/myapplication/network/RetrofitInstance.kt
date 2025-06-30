@@ -1,7 +1,10 @@
 package com.example.myapplication.network
 
+
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import com.example.myapplication.api.ExchangeRateApi
+
 
 object RetrofitInstance {
 
