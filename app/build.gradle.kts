@@ -43,6 +43,9 @@ android {
 }
 
 dependencies {
+
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    kapt("com.github.bumptech.glide:compiler:4.15.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
     implementation("androidx.work:work-runtime-ktx:2.8.1")
     implementation("androidx.recyclerview:recyclerview:1.2.1")

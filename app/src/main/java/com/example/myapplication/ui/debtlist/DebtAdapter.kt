@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.myapplication.R
 import com.example.myapplication.data.DebtItem
 import com.example.myapplication.databinding.ItemDebtBinding
 import java.text.SimpleDateFormat
@@ -17,57 +19,69 @@ class DebtAdapter(
 ) : ListAdapter<DebtItem, DebtAdapter.DebtViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DebtViewHolder {
-        val binding = ItemDebtBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemDebtBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return DebtViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: DebtViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item)
+        holder.bind(getItem(position))
     }
 
-    inner class DebtViewHolder(private val binding: ItemDebtBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class DebtViewHolder(
+        private val binding: ItemDebtBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(debt: DebtItem) {
+            val context = binding.root.context
             val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
-            val directionText = "${debt.payer} → ${debt.receiver}"
-            binding.tvName.text = directionText
+            // 1) Load image with Glide or placeholder
+            if (!debt.imageUri.isNullOrEmpty()) {
+                Glide.with(context)
+                    .load(debt.imageUri)
+                    .placeholder(R.drawable.image_placeholder)
+                    .error(R.drawable.image_placeholder)
+                    .into(binding.ivDebtImage)
+            } else {
+                binding.ivDebtImage.setImageResource(R.drawable.image_placeholder)
+            }
 
+            // 2) Text fields
+            binding.tvName.text = "${debt.payer} → ${debt.receiver}"
             binding.tvAmount.text = "₪%.0f".format(debt.amount)
-
-            val formattedDate = dateFormat.format(Date(debt.date))
-            binding.tvDate.text = formattedDate
-
+            binding.tvDate.text = dateFormat.format(Date(debt.date))
             binding.tvDescription.text = debt.description
 
+            // 3) Handled checkbox: detach listener, set state, reattach listener
+            binding.checkboxHandled.setOnCheckedChangeListener(null)
             binding.checkboxHandled.isChecked = debt.isSettled
             binding.checkboxHandled.setOnCheckedChangeListener { _, isChecked ->
-                // רק מעדכן isSettled
                 onCheckboxClick(debt.copy(isSettled = isChecked, isFavorite = debt.isFavorite))
             }
 
-            // favorite checkbox
+            // 4) Favorite checkbox: detach listener, set state, reattach listener
+            binding.checkboxFavorite.setOnCheckedChangeListener(null)
             binding.checkboxFavorite.isChecked = debt.isFavorite
             binding.checkboxFavorite.setOnCheckedChangeListener { _, isFav ->
-                // רק מעדכן isFavorite
                 onFavoriteClick(debt.copy(isFavorite = isFav, isSettled = debt.isSettled))
             }
 
+            // 5) Row click
             binding.root.setOnClickListener {
                 onItemClick(debt)
             }
         }
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<DebtItem>() {
-        override fun areItemsTheSame(oldItem: DebtItem, newItem: DebtItem): Boolean {
-            return oldItem.id == newItem.id
-        }
+    private class DiffCallback : DiffUtil.ItemCallback<DebtItem>() {
+        override fun areItemsTheSame(old: DebtItem, new: DebtItem): Boolean =
+            old.id == new.id
 
-        override fun areContentsTheSame(oldItem: DebtItem, newItem: DebtItem): Boolean {
-            return oldItem == newItem
-        }
+        override fun areContentsTheSame(old: DebtItem, new: DebtItem): Boolean =
+            old == new
     }
 }
