@@ -4,6 +4,7 @@ plugins {
     id("org.jetbrains.kotlin.kapt")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin") version "2.7.7"
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -62,6 +63,8 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation("com.google.dagger:hilt-android:2.56.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.56.1")
 }
 configurations.all {
     exclude(group = "com.android.support", module = "support-compat")
