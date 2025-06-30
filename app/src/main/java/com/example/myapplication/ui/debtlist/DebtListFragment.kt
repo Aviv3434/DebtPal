@@ -5,22 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myapplication.data.AppDatabase
-import com.example.myapplication.data.DebtRepository
 import com.example.myapplication.databinding.FragmentDebtListBinding
 import com.example.myapplication.viewmodel.DebtViewModel
-import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DebtListFragment : Fragment() {
-    private val debtViewModel: DebtViewModel by viewModels()
+
     private var _binding: FragmentDebtListBinding? = null
     private val binding get() = _binding!!
 
+    private val debtViewModel: DebtViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +31,6 @@ class DebtListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         val adapter = DebtAdapter(
             onItemClick = { selectedDebt ->
                 val action = DebtListFragmentDirections
@@ -41,22 +38,18 @@ class DebtListFragment : Fragment() {
                 findNavController().navigate(action)
             },
             onCheckboxClick = { updatedDebt ->
-
                 debtViewModel.updateDebt(updatedDebt)
             },
             onFavoriteClick = { updatedDebt ->
-
                 debtViewModel.updateDebt(updatedDebt)
             }
         )
 
-
         binding.recyclerDebts.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerDebts.adapter = adapter
 
-
-        debtViewModel.allDebts.observe(viewLifecycleOwner) { debtList ->
-            val openDebts = debtList.filter { !it.isSettled }
+        // מאזינים לחובות פתוחים בלבד
+        debtViewModel.unsettledDebts.observe(viewLifecycleOwner) { openDebts ->
             adapter.submitList(openDebts)
             binding.tvEmptyList.visibility =
                 if (openDebts.isEmpty()) View.VISIBLE else View.GONE

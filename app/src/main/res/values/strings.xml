@@ -54,5 +54,6 @@
     <string name="favorites">favorites</string>
     <string name="sync_now">Sync now</string>
     <string name="lunch_at_restaurant">Lunch at restaurant</string>
+    <string name="debt_image">Debt image</string>
 
 </resources>
