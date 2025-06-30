@@ -12,6 +12,11 @@ class DebtRepository(private val debtDao: DebtDao) {
         return debtDao.getDebtsByUser(user)
     }
 
+    fun getFavoriteDebts(): LiveData<List<DebtItem>> {
+        return debtDao.getFavoriteDebts()
+    }
+
+
     suspend fun insertDebt(debt: DebtItem) {
         debtDao.insertDebt(debt)
     }
