@@ -110,5 +110,90 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="48dp" />
+
+        <LinearLayout
+            android:id="@+id/btnLocalCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingVertical="18dp"
+            android:paddingStart="24dp"
+            android:layout_marginBottom="16dp"
+            android:elevation="6dp"
+            tools:ignore="RtlSymmetry">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_info_details"
+                android:layout_marginEnd="16dp"
+                app:tint="@android:color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/closed_debts"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnFavorites"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingVertical="18dp"
+            android:paddingStart="24dp"
+            android:layout_marginBottom="16dp"
+            android:elevation="6dp"
+            tools:ignore="RtlSymmetry">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/btn_star_big_on"
+                android:layout_marginEnd="16dp"
+                app:tint="@android:color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/favorites"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnSync"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingVertical="18dp"
+            android:paddingStart="24dp"
+            android:layout_marginBottom="16dp"
+            android:elevation="6dp"
+            tools:ignore="RtlSymmetry">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_popup_sync"
+                android:layout_marginEnd="16dp"
+                app:tint="@android:color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sync_background"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

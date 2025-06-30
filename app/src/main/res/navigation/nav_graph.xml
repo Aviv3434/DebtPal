@@ -16,6 +16,15 @@
         <action
             android:id="@+id/action_mainMenuFragment_to_debtListFragment"
             app:destination="@id/debtListFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragmentToLocalCountFragment"
+            app:destination="@id/localCountFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragmentToFavoritesFragment"
+            app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragmentToSyncFragment"
+            app:destination="@id/syncFragment" />
     </fragment>
 
     <fragment
@@ -39,5 +48,25 @@
             android:id="@+id/action_debtListFragment_to_addEditDebtFragment"
             app:destination="@id/addEditDebtFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/localCountFragment"
+        android:name="com.example.myapplication.ui.local.LocalCountFragment"
+        android:label="מניין חובות מקומי"
+        tools:layout="@layout/fragment_local_count" />
+
+    <!-- Favorites -->
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.myapplication.ui.favorites.FavoritesFragment"
+        android:label="מועדפים"
+        tools:layout="@layout/fragment_favorites" />
+
+    <!-- Sync -->
+    <fragment
+        android:id="@+id/syncFragment"
+        android:name="com.example.myapplication.ui.sync.SyncFragment"
+        android:label="סנכרון רקע"
+        tools:layout="@layout/fragment_sync" />
 
 </navigation>

@@ -44,8 +44,16 @@
     <string name="handled">טופל</string>
     <string name="name_format">%1$s paid to %2$s</string>
     <string name="app_logo">לוגו</string>
-    <string name="manage_your_debts">נהל את החובת שלך</string>
+    <string name="manage_your_debts">נהל את החובות שלך</string>
     <string name="with_ease">בקלות</string>
+    <string name="favorite">הוסף למועדפים</string>
+    <string name="no_favorites">אין מועדפים להצגה</string>
+    <string name="no_closed_debts">אין חובות שנסגרו</string>
+    <string name="closed_debts">חובות שנסגרו</string>
+    <string name="sync_background">סנכרון ברקע</string>
+    <string name="favorites">מועדפים</string>
+    <string name="sync_now">סנכרן עכשיו</string>
+    <string name="lunch_at_restaurant">ארוחת צהריים במסעדה</string>
 
 
 </resources>

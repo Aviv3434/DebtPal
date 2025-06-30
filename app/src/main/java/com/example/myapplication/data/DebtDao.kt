@@ -26,4 +26,7 @@ interface DebtDao {
 
     @Query("SELECT * FROM debts WHERE payer = :user OR receiver = :user ORDER BY date DESC")
     fun getDebtsByUser(user: String): LiveData<List<DebtItem>>
+
+    @Query("SELECT * FROM debts WHERE is_favorite = 1 ORDER BY date DESC")
+    fun getFavoriteDebts(): LiveData<List<DebtItem>>
 }
