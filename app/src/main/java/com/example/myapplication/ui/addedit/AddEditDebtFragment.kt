@@ -23,13 +23,16 @@ import com.example.myapplication.data.DebtItem
 import com.example.myapplication.databinding.FragmentAddEditDebtBinding
 import com.example.myapplication.data.DebtRepository
 import com.example.myapplication.viewmodel.DebtViewModel
-import com.example.myapplication.viewmodel.DebtViewModelFactory
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class AddEditDebtFragment : Fragment() {
-
+    private val debtViewModel: DebtViewModel by viewModels()
     private var _binding: FragmentAddEditDebtBinding? = null
     private val binding get() = _binding!!
 
@@ -82,10 +85,7 @@ class AddEditDebtFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val dao = AppDatabase.getDatabase(requireContext()).debtDao()
-        val repository = DebtRepository(dao)
-        val factory = DebtViewModelFactory(repository)
-        val debtViewModel = ViewModelProvider(this, factory)[DebtViewModel::class.java]
+
 
         editingDebt = args.debtItem
         populateFieldsForEdit()

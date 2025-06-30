@@ -12,14 +12,15 @@ import com.example.myapplication.data.AppDatabase
 import com.example.myapplication.data.DebtRepository
 import com.example.myapplication.databinding.FragmentDebtListBinding
 import com.example.myapplication.viewmodel.DebtViewModel
-import com.example.myapplication.viewmodel.DebtViewModelFactory
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DebtListFragment : Fragment() {
-
+    private val debtViewModel: DebtViewModel by viewModels()
     private var _binding: FragmentDebtListBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var debtViewModel: DebtViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,13 +33,7 @@ class DebtListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // הגדרת ViewModel ו־Repository
-        val dao = AppDatabase.getDatabase(requireContext()).debtDao()
-        val repository = DebtRepository(dao)
-        val factory = DebtViewModelFactory(repository)
-        debtViewModel = ViewModelProvider(this, factory)[DebtViewModel::class.java]
 
-        // יצירת ה‐Adapter עם שלושה callbacks
         val adapter = DebtAdapter(
             onItemClick = { selectedDebt ->
                 val action = DebtListFragmentDirections
@@ -46,20 +41,20 @@ class DebtListFragment : Fragment() {
                 findNavController().navigate(action)
             },
             onCheckboxClick = { updatedDebt ->
-                // עדכון רק isSettled
+
                 debtViewModel.updateDebt(updatedDebt)
             },
             onFavoriteClick = { updatedDebt ->
-                // עדכון רק isFavorite
+
                 debtViewModel.updateDebt(updatedDebt)
             }
         )
 
-        // bind ל‐RecyclerView
+
         binding.recyclerDebts.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerDebts.adapter = adapter
 
-        // תצוגת החובות שעדיין פתוחים
+
         debtViewModel.allDebts.observe(viewLifecycleOwner) { debtList ->
             val openDebts = debtList.filter { !it.isSettled }
             adapter.submitList(openDebts)

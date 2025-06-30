@@ -3,15 +3,19 @@ package com.example.myapplication.viewmodel
 import androidx.lifecycle.*
 import com.example.myapplication.data.DebtItem
 import com.example.myapplication.data.DebtRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class DebtViewModel(private val repository: DebtRepository) : ViewModel() {
+@HiltViewModel
+class DebtViewModel @Inject constructor(
+    private val repository: DebtRepository
+) : ViewModel() {
 
     val allDebts: LiveData<List<DebtItem>> = repository.allDebts
     val settledDebts: LiveData<List<DebtItem>> = repository.settledDebts
     val unsettledDebts: LiveData<List<DebtItem>> = repository.unsettledDebts
     val favoriteDebts: LiveData<List<DebtItem>> = repository.getFavoriteDebts()
-
 
     fun getDebtsByUser(user: String): LiveData<List<DebtItem>> {
         return repository.getDebtsByUser(user)
