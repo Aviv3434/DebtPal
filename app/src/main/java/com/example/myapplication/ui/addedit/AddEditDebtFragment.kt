@@ -15,18 +15,17 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.myapplication.R
 import com.example.myapplication.data.DebtItem
 import com.example.myapplication.databinding.FragmentAddEditDebtBinding
 import com.example.myapplication.viewmodel.DebtViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
-import androidx.fragment.app.viewModels
-import com.example.myapplication.R
-import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class AddEditDebtFragment : Fragment() {
@@ -83,8 +82,6 @@ class AddEditDebtFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         editingDebt = args.debtItem
         populateFieldsForEdit()
 
@@ -113,7 +110,8 @@ class AddEditDebtFragment : Fragment() {
             binding.etReceiver.setText(debt.receiver)
             binding.etAmount.setText(debt.amount.toString())
             binding.etDescription.setText(debt.description)
-            binding.tvDate.text = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(debt.date))
+            binding.tvDate.text =
+                SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(debt.date))
             selectedDate = debt.date
             binding.checkboxSettled.isChecked = debt.isSettled
             if (!debt.imageUri.isNullOrEmpty()) {
@@ -152,7 +150,7 @@ class AddEditDebtFragment : Fragment() {
                     1 -> openGallery()
                 }
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(R.string.cancel, null)
             .show()
     }
 
@@ -171,7 +169,8 @@ class AddEditDebtFragment : Fragment() {
     }
 
     private fun createImageFile(): File {
-        val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+        val timestamp =
+            SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
         val storageDir = requireContext().cacheDir
         return File.createTempFile("JPEG_${timestamp}_", ".jpg", storageDir)
     }
@@ -183,7 +182,8 @@ class AddEditDebtFragment : Fragment() {
             { _, year, month, day ->
                 calendar.set(year, month, day)
                 selectedDate = calendar.timeInMillis
-                val formatted = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(selectedDate))
+                val formatted =
+                    SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(selectedDate))
                 binding.tvDate.text = formatted
             },
             calendar.get(Calendar.YEAR),
@@ -191,7 +191,6 @@ class AddEditDebtFragment : Fragment() {
             calendar.get(Calendar.DAY_OF_MONTH)
         ).show()
     }
-
 
     private fun saveDebt(debtViewModel: DebtViewModel) {
         val payer = binding.etPayer.text.toString().trim()
@@ -202,6 +201,18 @@ class AddEditDebtFragment : Fragment() {
 
         if (payer.isEmpty() || receiver.isEmpty() || amountText.isEmpty() || selectedDate == 0L) {
             Toast.makeText(requireContext(), R.string.please_fill_all_fields, Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val nameRegex = "^[\\p{L} ]+\$".toRegex()
+        if (!payer.matches(nameRegex)) {
+            binding.etPayer.error = getString(R.string.error_only_letters)
+            binding.etPayer.requestFocus()
+            return
+        }
+        if (!receiver.matches(nameRegex)) {
+            binding.etReceiver.error = getString(R.string.error_only_letters)
+            binding.etReceiver.requestFocus()
             return
         }
 

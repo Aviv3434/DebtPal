@@ -64,6 +64,11 @@
     <string name="permission_denied">אין הרשאת גישה</string>
     <string name="permission_required_to_access_images">אין אופציה לגשת למצלמה או לגלריה</string>
     <string name="ok">אוקיי</string>
+    <string name="loading_rates">טוען שערים</string>
+    <string name="sync_sent">הסנכרון נשלח</string>
+    <string name="usd_rate_not_available">שער הדולר לא נמצא</string>
+    <string name="loading">טוען...</string>
+    <string name="error_only_letters">אנא הכנס רק אותיות עבור שמות המשלם והמקבל</string>
 
 
 </resources>

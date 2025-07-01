@@ -68,5 +68,6 @@
     <string name="sync_sent">Sync sent</string>
     <string name="usd_rate_not_available">USD rate not found</string>
     <string name="loading">Loading...</string>
+    <string name="error_only_letters">Only letters allowed for payer  and receiver names</string>
 
 </resources>
