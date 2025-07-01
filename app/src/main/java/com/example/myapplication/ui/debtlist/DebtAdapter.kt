@@ -46,7 +46,7 @@ class DebtAdapter(
             val context = binding.root.context
             val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
-            // 1) Load image with Glide or placeholder
+
             if (!debt.imageUri.isNullOrEmpty()) {
                 Glide.with(context)
                     .load(debt.imageUri)
@@ -58,7 +58,8 @@ class DebtAdapter(
             }
 
             binding.tvName.text = "${debt.payer} → ${debt.receiver}"
-            binding.tvAmount.text = "₪%.0f".format(debt.amount)
+
+            binding.tvAmount.text = "₪%.2f".format(debt.amount)
             binding.tvDate.text = dateFormat.format(Date(debt.date))
             binding.tvDescription.text = debt.description
 
