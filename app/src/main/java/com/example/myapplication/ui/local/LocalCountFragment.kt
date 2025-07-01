@@ -28,7 +28,7 @@ class LocalCountFragment : Fragment(R.layout.fragment_local_count) {
         val tvNoPast = view.findViewById<TextView>(R.id.tvNoPast)
 
         val adapter = DebtAdapter(
-            onItemClick     = { _: DebtItem -> /* no-op */ },
+            onItemClick     = { _: DebtItem ->  },
             onCheckboxClick = { updatedDebt ->
                 debtViewModel.updateDebt(updatedDebt)
             },
@@ -40,7 +40,7 @@ class LocalCountFragment : Fragment(R.layout.fragment_local_count) {
         rvPast.layoutManager = LinearLayoutManager(requireContext())
         rvPast.adapter        = adapter
 
-        // מאזינים לחובות שסומנו כ־settled
+
         debtViewModel.settledDebts.observe(viewLifecycleOwner) { settledList ->
             tvCount.text = getString(R.string.closed_debts, settledList.size)
             adapter.submitList(settledList)

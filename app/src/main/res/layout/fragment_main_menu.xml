@@ -165,7 +165,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Favorites"
+                    android:text="@string/favorites"
                     android:textColor="@android:color/white"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -193,7 +193,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sync background"
+                    android:text="@string/sync_background"
                     android:textColor="@android:color/white"
                     android:textSize="18sp" />
             </LinearLayout>

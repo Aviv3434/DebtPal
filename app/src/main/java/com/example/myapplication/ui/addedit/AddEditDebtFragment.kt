@@ -15,18 +15,16 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.myapplication.data.AppDatabase
 import com.example.myapplication.data.DebtItem
 import com.example.myapplication.databinding.FragmentAddEditDebtBinding
-import com.example.myapplication.data.DebtRepository
 import com.example.myapplication.viewmodel.DebtViewModel
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 import androidx.fragment.app.viewModels
+import com.example.myapplication.R
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -147,7 +145,7 @@ class AddEditDebtFragment : Fragment() {
 
     private fun showImageSourceDialog() {
         AlertDialog.Builder(requireContext())
-            .setTitle("Select Image Source")
+            .setTitle(R.string.select_image_source)
             .setItems(arrayOf("Camera", "Gallery")) { _, which ->
                 when (which) {
                     0 -> openCamera()
@@ -203,13 +201,13 @@ class AddEditDebtFragment : Fragment() {
         val isSettled = binding.checkboxSettled.isChecked
 
         if (payer.isEmpty() || receiver.isEmpty() || amountText.isEmpty() || selectedDate == 0L) {
-            Toast.makeText(requireContext(), "Please fill all required fields", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.please_fill_all_fields, Toast.LENGTH_SHORT).show()
             return
         }
 
         val amount = amountText.toDoubleOrNull()
         if (amount == null || amount <= 0) {
-            Toast.makeText(requireContext(), "Amount must be a valid number", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.Amount_must_be_a_valid_number, Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -235,21 +233,21 @@ class AddEditDebtFragment : Fragment() {
 
     private fun showDeleteConfirmation(debt: DebtItem, debtViewModel: DebtViewModel) {
         AlertDialog.Builder(requireContext())
-            .setTitle("Delete Debt")
-            .setMessage("Are you sure you want to delete this debt?")
-            .setPositiveButton("Delete") { _, _ ->
+            .setTitle(R.string.delete_debt)
+            .setMessage(R.string.are_you_sure_delete_debt)
+            .setPositiveButton(R.string.delete) { _, _ ->
                 debtViewModel.deleteDebt(debt)
                 findNavController().navigateUp()
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(R.string.cancel, null)
             .show()
     }
 
     private fun showPermissionDeniedDialog() {
         AlertDialog.Builder(requireContext())
-            .setTitle("Permission Denied")
-            .setMessage("Cannot access camera or gallery without permission.")
-            .setPositiveButton("OK", null)
+            .setTitle(R.string.permission_denied)
+            .setMessage(R.string.permission_required_to_access_images)
+            .setPositiveButton(R.string.ok, null)
             .show()
     }
 

@@ -16,7 +16,7 @@ class SyncFragment : Fragment(R.layout.fragment_sync) {
         view.findViewById<Button>(R.id.btnSyncNow).setOnClickListener {
             val req = OneTimeWorkRequestBuilder<SyncWorker>().build()
             WorkManager.getInstance(requireContext()).enqueue(req)
-            Toast.makeText(requireContext(), "Sync sent", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.sync_sent, Toast.LENGTH_SHORT).show()
 
         }
     }

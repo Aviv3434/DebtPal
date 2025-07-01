@@ -55,6 +55,15 @@
     <string name="sync_now">סנכרן עכשיו</string>
     <string name="lunch_at_restaurant">ארוחת צהריים במסעדה</string>
     <string name="debt_image">תמונת חוב</string>
+    <string name="select_image_source">בחר מקור להעלאת תמונה</string>
+    <string name="please_fill_all_fields">אנא מלא את כל השדרות הנדרשים</string>
+    <string name="Amount_must_be_a_valid_number">הסכום חייב להיות מספר תקין</string>
+    <string name="delete_debt">מחק חוב</string>
+    <string name="are_you_sure_delete_debt">האם אתה בטוח שברצונך למחוק את החוב?</string>
+    <string name="cancel">ביטול</string>
+    <string name="permission_denied">אין הרשאת גישה</string>
+    <string name="permission_required_to_access_images">אין אופציה לגשת למצלמה או לגלריה</string>
+    <string name="ok">אוקיי</string>
 
 
 </resources>

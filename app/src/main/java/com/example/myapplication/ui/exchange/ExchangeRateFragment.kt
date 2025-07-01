@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentExchangeRateBinding
 import com.example.myapplication.viewmodel.ExchangeRateViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,7 +39,7 @@ class ExchangeRateFragment : Fragment() {
             if (usdRate != null) {
                 binding.tvRates.text = "USD: $usdRate"
             } else {
-                binding.tvRates.text = "Failed to load USD rate"
+                binding.tvRates.text = R.string.loading_rates.toString()
             }
         }
 

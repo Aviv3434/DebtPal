@@ -1,6 +1,7 @@
 package com.example.myapplication.viewmodel
 
 import androidx.lifecycle.*
+import com.example.myapplication.R
 import com.example.myapplication.repository.ExchangeRateRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -22,7 +23,7 @@ class ExchangeRateViewModel @Inject constructor(
             try {
                 val rate = repository.getUsdRate()
                 if (rate != null) _usdRate.value = rate
-                else _error.value = "USD rate not found"
+                else _error.value = R.string.usd_rate_not_available.toString()
             } catch (e: Exception) {
                 _error.value = "API Error: ${e.message}"
             }
