@@ -1,15 +1,16 @@
 package com.example.myapplication.repository
 
-
-import javax.inject.Inject
+import android.util.Log
+import com.example.myapplication.BuildConfig
 import com.example.myapplication.api.ExchangeRateApi
-import com.example.myapplication.model.ExchangeRateResponse
-import retrofit2.Response
+import javax.inject.Inject
 
 class ExchangeRateRepository @Inject constructor(
     private val api: ExchangeRateApi
 ) {
-    suspend fun getRates(base: String): Response<ExchangeRateResponse> {
-        return api.getRates(base)
+    suspend fun getUsdRate(): Double? {
+        val response = api.getRates("b5c5248d82a14384a17a563fd4fe19dc")
+        return response.rates["ILS"]?.toDoubleOrNull()
     }
 }
+

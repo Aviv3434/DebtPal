@@ -10,6 +10,7 @@ plugins {
 android {
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
     namespace = "com.example.myapplication"
     compileSdk = 35
@@ -20,6 +21,9 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
+
+        buildConfigField("String", "EXCHANGE_RATE_API_KEY", "\"b5c5248d82a14384a17a563fd4fe19dc\"")
+
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -70,6 +74,7 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.56.1")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 }
 configurations.all {
     exclude(group = "com.android.support", module = "support-compat")

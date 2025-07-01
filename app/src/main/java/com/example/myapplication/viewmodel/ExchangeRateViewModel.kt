@@ -2,7 +2,6 @@ package com.example.myapplication.viewmodel
 
 import androidx.lifecycle.*
 import com.example.myapplication.repository.ExchangeRateRepository
-import com.example.myapplication.model.ExchangeRateResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -12,22 +11,22 @@ class ExchangeRateViewModel @Inject constructor(
     private val repository: ExchangeRateRepository
 ) : ViewModel() {
 
-    private val _exchangeRates = MutableLiveData<ExchangeRateResponse?>()
-    val exchangeRates: LiveData<ExchangeRateResponse?> get() = _exchangeRates
+    private val _usdRate = MutableLiveData<Double?>()
+    val usdRate: LiveData<Double?> = _usdRate
 
-    fun getRates(base: String) {
+    private val _error = MutableLiveData<String>()
+    val error: LiveData<String> get() = _error
+
+    fun getRates() {
         viewModelScope.launch {
             try {
-                val response = repository.getRates(base)
-                if (response.isSuccessful) {
-                    _exchangeRates.value = response.body()
-                } else {
-                    _exchangeRates.value = null
-                }
+                val rate = repository.getUsdRate()
+                if (rate != null) _usdRate.value = rate
+                else _error.value = "USD rate not found"
             } catch (e: Exception) {
-                _exchangeRates.value = null
+                _error.value = "API Error: ${e.message}"
             }
         }
     }
-
 }
+

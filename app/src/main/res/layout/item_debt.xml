@@ -80,6 +80,17 @@
             android:layout_marginBottom="4dp" />
 
         <TextView
+            android:id="@+id/tvAmountUsd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="≈ $XX.XX"
+            android:textSize="14sp"
+            android:textColor="#227722"
+            android:fontFamily="@font/eb_garamond_variable_font_wght"
+            android:layout_marginBottom="4dp" />
+
+
+        <TextView
             android:id="@+id/tvDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

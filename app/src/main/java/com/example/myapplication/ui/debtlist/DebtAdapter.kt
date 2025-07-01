@@ -1,6 +1,7 @@
 package com.example.myapplication.ui.debtlist
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -18,6 +19,12 @@ class DebtAdapter(
     private val onFavoriteClick: (DebtItem) -> Unit
 ) : ListAdapter<DebtItem, DebtAdapter.DebtViewHolder>(DiffCallback()) {
 
+    private var usdRate: Double? = null
+
+    fun updateUsdRate(rate: Double) {
+        usdRate = rate
+        notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DebtViewHolder {
         val binding = ItemDebtBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -50,27 +57,31 @@ class DebtAdapter(
                 binding.ivDebtImage.setImageResource(R.drawable.image_placeholder)
             }
 
-            // 2) Text fields
             binding.tvName.text = "${debt.payer} → ${debt.receiver}"
             binding.tvAmount.text = "₪%.0f".format(debt.amount)
             binding.tvDate.text = dateFormat.format(Date(debt.date))
             binding.tvDescription.text = debt.description
 
-            // 3) Handled checkbox: detach listener, set state, reattach listener
+            usdRate?.let {
+                val usd = debt.amount / it
+                binding.tvAmountUsd.text = "≈ $%.2f".format(usd)
+                binding.tvAmountUsd.visibility = View.VISIBLE
+            } ?: run {
+                binding.tvAmountUsd.visibility = View.GONE
+            }
+
             binding.checkboxHandled.setOnCheckedChangeListener(null)
             binding.checkboxHandled.isChecked = debt.isSettled
             binding.checkboxHandled.setOnCheckedChangeListener { _, isChecked ->
                 onCheckboxClick(debt.copy(isSettled = isChecked, isFavorite = debt.isFavorite))
             }
 
-            // 4) Favorite checkbox: detach listener, set state, reattach listener
             binding.checkboxFavorite.setOnCheckedChangeListener(null)
             binding.checkboxFavorite.isChecked = debt.isFavorite
             binding.checkboxFavorite.setOnCheckedChangeListener { _, isFav ->
                 onFavoriteClick(debt.copy(isFavorite = isFav, isSettled = debt.isSettled))
             }
 
-            // 5) Row click
             binding.root.setOnClickListener {
                 onItemClick(debt)
             }

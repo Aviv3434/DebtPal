@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.myapplication.databinding.FragmentExchangeRateBinding
 import com.example.myapplication.viewmodel.ExchangeRateViewModel
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class ExchangeRateFragment : Fragment() {
@@ -17,6 +18,8 @@ class ExchangeRateFragment : Fragment() {
     private val viewModel: ExchangeRateViewModel by viewModels()
     private var _binding: FragmentExchangeRateBinding? = null
     private val binding get() = _binding!!
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,18 +32,19 @@ class ExchangeRateFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getRates("USD")
+        viewModel.getRates()
 
-        viewModel.exchangeRates.observe(viewLifecycleOwner) { response ->
-            response?.let {
-                val rates = it.rates
-                val text = rates.entries.joinToString("\n") { entry -> "${entry.key}: ${entry.value}" }
-                binding.tvRates.text = text
-            } ?: run {
-                binding.tvRates.text = "Failed to fetch exchange rates."
+        viewModel.usdRate.observe(viewLifecycleOwner) { usdRate ->
+            if (usdRate != null) {
+                binding.tvRates.text = "USD: $usdRate"
+            } else {
+                binding.tvRates.text = "Failed to load USD rate"
             }
         }
 
+        viewModel.error.observe(viewLifecycleOwner) { errorMsg ->
+            binding.tvRates.text = errorMsg
+        }
     }
 
     override fun onDestroyView() {
