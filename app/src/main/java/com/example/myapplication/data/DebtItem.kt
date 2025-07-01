@@ -37,6 +37,6 @@ data class DebtItem(
     @ColumnInfo(name = "is_favorite")
     val isFavorite: Boolean = false,
 
-    @ColumnInfo(name = "remote_id") // הכנה לענן
+    @ColumnInfo(name = "remote_id")
     val remoteId: String? = null
 ) : Parcelable

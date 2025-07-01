@@ -37,7 +37,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
         rvFavorites.layoutManager = LinearLayoutManager(requireContext())
         rvFavorites.adapter        = adapter
 
-        // מאזינים לחובות שמסומנים מועדפים
+
         debtViewModel.favoriteDebts.observe(viewLifecycleOwner) { list ->
             adapter.submitList(list)
             tvEmpty.visibility = if (list.isEmpty()) View.VISIBLE else View.GONE

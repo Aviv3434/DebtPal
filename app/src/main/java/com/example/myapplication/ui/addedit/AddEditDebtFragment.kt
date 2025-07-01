@@ -15,20 +15,17 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.myapplication.data.AppDatabase
+import com.example.myapplication.R
 import com.example.myapplication.data.DebtItem
 import com.example.myapplication.databinding.FragmentAddEditDebtBinding
-import com.example.myapplication.data.DebtRepository
 import com.example.myapplication.viewmodel.DebtViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
-import androidx.fragment.app.viewModels
-import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class AddEditDebtFragment : Fragment() {
@@ -85,8 +82,6 @@ class AddEditDebtFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         editingDebt = args.debtItem
         populateFieldsForEdit()
 
@@ -115,7 +110,8 @@ class AddEditDebtFragment : Fragment() {
             binding.etReceiver.setText(debt.receiver)
             binding.etAmount.setText(debt.amount.toString())
             binding.etDescription.setText(debt.description)
-            binding.tvDate.text = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(debt.date))
+            binding.tvDate.text =
+                SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(debt.date))
             selectedDate = debt.date
             binding.checkboxSettled.isChecked = debt.isSettled
             if (!debt.imageUri.isNullOrEmpty()) {
@@ -147,14 +143,14 @@ class AddEditDebtFragment : Fragment() {
 
     private fun showImageSourceDialog() {
         AlertDialog.Builder(requireContext())
-            .setTitle("Select Image Source")
+            .setTitle(R.string.select_image_source)
             .setItems(arrayOf("Camera", "Gallery")) { _, which ->
                 when (which) {
                     0 -> openCamera()
                     1 -> openGallery()
                 }
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(R.string.cancel, null)
             .show()
     }
 
@@ -173,7 +169,8 @@ class AddEditDebtFragment : Fragment() {
     }
 
     private fun createImageFile(): File {
-        val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+        val timestamp =
+            SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
         val storageDir = requireContext().cacheDir
         return File.createTempFile("JPEG_${timestamp}_", ".jpg", storageDir)
     }
@@ -185,7 +182,8 @@ class AddEditDebtFragment : Fragment() {
             { _, year, month, day ->
                 calendar.set(year, month, day)
                 selectedDate = calendar.timeInMillis
-                val formatted = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(selectedDate))
+                val formatted =
+                    SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(selectedDate))
                 binding.tvDate.text = formatted
             },
             calendar.get(Calendar.YEAR),
@@ -193,7 +191,6 @@ class AddEditDebtFragment : Fragment() {
             calendar.get(Calendar.DAY_OF_MONTH)
         ).show()
     }
-
 
     private fun saveDebt(debtViewModel: DebtViewModel) {
         val payer = binding.etPayer.text.toString().trim()
@@ -203,13 +200,25 @@ class AddEditDebtFragment : Fragment() {
         val isSettled = binding.checkboxSettled.isChecked
 
         if (payer.isEmpty() || receiver.isEmpty() || amountText.isEmpty() || selectedDate == 0L) {
-            Toast.makeText(requireContext(), "Please fill all required fields", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.please_fill_all_fields, Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val nameRegex = "^[\\p{L} ]+\$".toRegex()
+        if (!payer.matches(nameRegex)) {
+            binding.etPayer.error = getString(R.string.error_only_letters)
+            binding.etPayer.requestFocus()
+            return
+        }
+        if (!receiver.matches(nameRegex)) {
+            binding.etReceiver.error = getString(R.string.error_only_letters)
+            binding.etReceiver.requestFocus()
             return
         }
 
         val amount = amountText.toDoubleOrNull()
         if (amount == null || amount <= 0) {
-            Toast.makeText(requireContext(), "Amount must be a valid number", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.Amount_must_be_a_valid_number, Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -235,21 +244,21 @@ class AddEditDebtFragment : Fragment() {
 
     private fun showDeleteConfirmation(debt: DebtItem, debtViewModel: DebtViewModel) {
         AlertDialog.Builder(requireContext())
-            .setTitle("Delete Debt")
-            .setMessage("Are you sure you want to delete this debt?")
-            .setPositiveButton("Delete") { _, _ ->
+            .setTitle(R.string.delete_debt)
+            .setMessage(R.string.are_you_sure_delete_debt)
+            .setPositiveButton(R.string.delete) { _, _ ->
                 debtViewModel.deleteDebt(debt)
                 findNavController().navigateUp()
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(R.string.cancel, null)
             .show()
     }
 
     private fun showPermissionDeniedDialog() {
         AlertDialog.Builder(requireContext())
-            .setTitle("Permission Denied")
-            .setMessage("Cannot access camera or gallery without permission.")
-            .setPositiveButton("OK", null)
+            .setTitle(R.string.permission_denied)
+            .setMessage(R.string.permission_required_to_access_images)
+            .setPositiveButton(R.string.ok, null)
             .show()
     }
 
